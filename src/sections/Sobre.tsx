@@ -58,7 +58,7 @@ export default function Sobre() {
             >
               <div className="relative w-full aspect-[3/4]">
                 <Image
-                  src="/consultor3.png"
+                  src="/otavio1.webp"
                   alt="Otavio Silva — Consultor VD Negócios Londrina"
                   fill
                   className="object-cover object-top"
@@ -87,7 +87,7 @@ export default function Sobre() {
                 ref={p1Rev.ref}
                 className={[
                   "mt-4 text-lg text-slate-700",
-                  "text-justify sm:text-left hyphens-auto",
+                  "text-justify hyphens-auto", // <-- AJUSTADO AQUI
                   "transition-all duration-700 ease-out delay-100",
                   p1Rev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
                 ].join(" ")}
@@ -101,7 +101,7 @@ export default function Sobre() {
                 ref={p2Rev.ref}
                 className={[
                   "mt-3 text-lg text-slate-700",
-                  "text-justify sm:text-left hyphens-auto",
+                  "text-justify hyphens-auto", // <-- AJUSTADO AQUI
                   "transition-all duration-700 ease-out delay-150",
                   p2Rev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
                 ].join(" ")}
@@ -122,19 +122,19 @@ export default function Sobre() {
               >
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
-                  <span className="text-justify sm:text-left">
+                  <span className="text-justify"> {/* <-- AJUSTADO AQUI */}
                     Especialista em formatação, expansão e gestão de redes
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
-                  <span className="text-justify sm:text-left">
+                  <span className="text-justify"> {/* <-- AJUSTADO AQUI */}
                     Experiência com marcas no Brasil e no exterior
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
-                  <span className="text-justify sm:text-left">
+                  <span className="text-justify"> {/* <-- AJUSTADO AQUI */}
                     Foco em resultados: governança, previsibilidade e escala
                   </span>
                 </li>

@@ -5,9 +5,7 @@ import {
   ClipboardCheck,
   Layers,
   LineChart,
-  Users,
   Globe2,
-  Wrench,
 } from "lucide-react";
 
 /** Hook leve para revelar ao rolar */
@@ -46,38 +44,28 @@ function useReveal<T extends HTMLElement>(opts?: IntersectionObserverInit) {
 
 export default function Services() {
   const head = useReveal<HTMLDivElement>();
-  const gridRef = useRef<HTMLDivElement | null>(null); // só pra referência, não precisa de visibilidade aqui
 
+  // Array de serviços atualizado com os 4 itens principais
   const items = [
     {
+      title: "Metodologia Acelera+",
+      desc: "Sprints, planejamento e metas integrando produto, marketing e vendas para crescer com previsibilidade.",
+      icon: LineChart,
+    },
+    {
       title: "Análise de Franqueabilidade",
-      desc: "Primeiro passo: avaliamos se o seu modelo tem fit para franquias e o que precisa para escalar com segurança.",
+      desc: "Avaliamos se seu modelo tem fit para franquias e o que precisa para escalar com segurança.",
       icon: ClipboardCheck,
     },
     {
       title: "Formatação de Franquias",
-      desc: "COF, contratos, manuais, unit economics e governança para operar como rede com previsibilidade.",
+      desc: "COF, contratos, manuais e governança para operar como rede com previsibilidade e lucro.",
       icon: Layers,
     },
     {
-      title: "Expansão & Comercial",
-      desc: "Funil de expansão, SDR/Closer, critérios de seleção e territorialização orientada por dados.",
-      icon: Users,
-    },
-    {
-      title: "Assessoria para Franquias",
-      desc: "Gestão da rede: padronização, suporte de campo, rotinas, indicadores e melhoria contínua.",
-      icon: Wrench,
-    },
-    {
       title: "Internacionalização",
-      desc: "Europa: fit regulatório, adaptação de oferta, operação piloto e parceiros locais para reduzir riscos.",
+      desc: "Levamos sua empresa para a Europa com análise de mercado, adaptação e parceiros locais.",
       icon: Globe2,
-    },
-    {
-      title: "Metodologia Acelera+",
-      desc: "Sprints, rituais e metas integrando produto, marketing, vendas e operações para crescer com previsibilidade.",
-      icon: LineChart,
     },
   ];
 
@@ -96,16 +84,15 @@ export default function Services() {
           <h2 className="text-3xl md:text-4xl font-bold leading-tight text-purple-900">
             Soluções para Escalar seu Negócio
           </h2>
-          <p className="mt-4 text-lg text-slate-700 justify-around">
+          <p className="mt-4 text-lg text-slate-700">
             Atuação ponta a ponta — do diagnóstico à expansão — com método próprio,
             personalização e foco em resultados.
           </p>
         </div>
 
-        {/* Grid de cards com stagger */}
+        {/* Grid de cards atualizado para 4 colunas */}
         <div
-          ref={gridRef}
-          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
         >
           {items.map(({ title, desc, icon: Icon }, i) => (
             <Card
@@ -113,12 +100,12 @@ export default function Services() {
               Icon={Icon}
               title={title}
               desc={desc}
-              delay={80 * i} // 0ms, 80ms, 160ms...
+              delay={100 * i} // 0ms, 100ms, 200ms...
             />
           ))}
         </div>
 
-        {/* CTA final com leve reveal também */}
+        {/* CTA final */}
         <FooterCta />
       </div>
     </section>
@@ -144,23 +131,23 @@ function Card({
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={[
-        "group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md",
-        "transition-all duration-700 ease-out motion-reduce:transition-none",
+        "group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300",
+        "duration-700 ease-out motion-reduce:transition-none",
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
       ].join(" ")}
     >
-      <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500 text-white">
-        <Icon className="h-6 w-6" aria-hidden="true" />
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-orange-500 text-white">
+        <Icon className="h-7 w-7" aria-hidden="true" />
       </div>
-      <h3 className="mt-4 text-lg font-semibold text-slate-900">{title}</h3>
-      <p className="mt-2 text-slate-700">{desc}</p>
-      <div className="mt-4">
+      <h3 className="mt-5 text-lg font-semibold text-slate-900">{title}</h3>
+      <p className="mt-2 text-base text-slate-700 flex-grow">{desc}</p>
+      <div className="mt-5">
         <a
           href="#contato"
-          className="text-purple-800 font-medium hover:underline"
+          className="text-purple-800 font-semibold hover:underline"
           aria-label={`Falar com especialista sobre ${title}`}
         >
-          Falar com especialista →
+          Saber mais →
         </a>
       </div>
     </div>
@@ -173,7 +160,7 @@ function FooterCta() {
     <div
       ref={wrap.ref}
       className={[
-        "mt-12 flex justify-center",
+        "mt-16 flex justify-center", // Aumentei a margem superior
         "transition-all duration-700 ease-out motion-reduce:transition-none",
         wrap.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
       ].join(" ")}

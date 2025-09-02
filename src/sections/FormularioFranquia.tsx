@@ -1,0 +1,79 @@
+"use client";
+
+import { useState } from "react";
+
+export default function FormularioFranquia() {
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    telefone: "",
+    empresa: "",
+    segmento: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("enviando");
+
+    try {
+      // **IMPORTANTE**: Substitua pela sua URL do Formspree
+      const response = await fetch("https://formspree.io/f/YOUR_UNIQUE_ID", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("sucesso");
+        setFormData({ nome: "", email: "", telefone: "", empresa: "", segmento: "" });
+      } else {
+        setStatus("erro");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      setStatus("erro");
+    }
+  };
+
+  return (
+    <div className="w-full max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200">
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label htmlFor="nome" className="block text-sm font-semibold text-slate-700 mb-1">Nome</label>
+            <input type="text" id="nome" name="nome" value={formData.nome} onChange={handleChange} required className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500" />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-1">Email Profissional</label>
+            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500" />
+          </div>
+          <div>
+            <label htmlFor="telefone" className="block text-sm font-semibold text-slate-700 mb-1">Telefone / WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" value={formData.telefone} onChange={handleChange} required className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500" />
+          </div>
+          <div>
+            <label htmlFor="empresa" className="block text-sm font-semibold text-slate-700 mb-1">Nome da Empresa</label>
+            <input type="text" id="empresa" name="empresa" value={formData.empresa} onChange={handleChange} required className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500" />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="segmento" className="block text-sm font-semibold text-slate-700 mb-1">Segmento de Atuação</label>
+          <input type="text" id="segmento" name="segmento" value={formData.segmento} onChange={handleChange} required placeholder="Ex: Alimentação, moda, serviços, etc." className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500" />
+        </div>
+        <div className="text-center pt-3">
+          <button type="submit" disabled={status === "enviando"} className="w-full md:w-auto inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 px-10 py-3 text-base font-semibold text-white shadow-lg transition-transform duration-300 hover:scale-[1.03] disabled:bg-slate-400">
+            {status === "enviando" ? "Enviando Análise..." : "Solicitar Análise de Franqueabilidade"}
+          </button>
+        </div>
+      </form>
+      {status === "sucesso" && <p className="text-center mt-4 p-3 bg-green-100 text-green-800 rounded-md">Dados enviados! Em breve, Otávio entrará em contato.</p>}
+      {status === "erro" && <p className="text-center mt-4 p-3 bg-red-100 text-red-800 rounded-md">Ocorreu um erro. Por favor, tente novamente.</p>}
+    </div>
+  );
+}

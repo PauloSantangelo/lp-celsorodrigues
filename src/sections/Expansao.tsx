@@ -38,8 +38,8 @@ function useReveal<T extends HTMLElement>(opts?: IntersectionObserverInit) {
 
 export default function Expansao() {
   const head = useReveal<HTMLElement>();
-  const card1 = useReveal<HTMLDivElement>();
-  const card2 = useReveal<HTMLDivElement>();
+  const franquiaTxt = useReveal<HTMLDivElement>();
+  const franquiaImg = useReveal<HTMLDivElement>();
   const aceleraImg = useReveal<HTMLDivElement>();
   const aceleraTxt = useReveal<HTMLDivElement>();
 
@@ -55,28 +55,26 @@ export default function Expansao() {
           ].join(" ")}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-purple-900 leading-tight">
-            Formatação, Expansão e Escala
+            Estruture sua Franquia, Acelere seu Negócio
           </h2>
           <p className="mt-3 text-lg text-slate-700 max-w-3xl">
-            Dois caminhos para crescer com segurança — e um método para acelerar os resultados.
+            Soluções completas para transformar seu negócio em uma rede de sucesso ou para impulsionar o crescimento da sua PME.
           </p>
         </header>
 
-        {/* Blocos superiores (2 colunas) */}
-        <div className="grid md:grid-cols-2 gap-8 relative">
-          <div className="hidden md:block absolute left-1/2 top-3 bottom-3 w-px bg-slate-200" />
-
-          {/* Card 1 — Formatação */}
+        {/* Bloco Franquias (Texto + Imagem) */}
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Coluna de Texto */}
           <div
-            ref={card1.ref}
+            ref={franquiaTxt.ref}
             className={[
-              "relative transition-all duration-700 ease-out motion-reduce:transition-none",
-              card1.visible
-                ? "opacity-100 translate-y-0 scale-100"
-                : "opacity-0 translate-y-6 scale-95",
+              "order-1 transition-all duration-700 ease-out motion-reduce:transition-none",
+              franquiaTxt.visible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-6",
             ].join(" ")}
           >
-            <div className="rounded-2xl bg-white border border-slate-200 p-6 md:p-8 shadow-sm">
+            <div className="rounded-2xl bg-white border border-slate-200 p-6 md:p-8 shadow-sm h-full">
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500 text-white text-lg font-bold">
                 F
               </div>
@@ -84,13 +82,12 @@ export default function Expansao() {
                 Formatação de Franquias
               </h3>
               <p className="mt-2 text-slate-700">
-                Formatação completa para operar como rede, com segurança jurídica e
-                previsibilidade financeira — pronta para expansão.
+                Estruturamos seu negócio para se tornar uma rede de franquias sólida, com segurança jurídica e pronta para escalar.
               </p>
               <ul className="mt-4 space-y-2 text-slate-700">
-                <li>• COF, Contrato de Franquia e Manuais Operacionais</li>
-                <li>• Modelagem financeira (unit economics, payback, CAPEX/OPEX)</li>
-                <li>• Territórios, critérios de seleção e playbook de expansão</li>
+                <li className="flex items-start"><span className="text-orange-500 mr-2 mt-1">•</span>COF, Contrato e Manuais Operacionais</li>
+                <li className="flex items-start"><span className="text-orange-500 mr-2 mt-1">•</span>Modelagem financeira completa (payback, taxas, etc.)</li>
+                <li className="flex items-start"><span className="text-orange-500 mr-2 mt-1">•</span>Playbook de expansão e critérios de seleção</li>
               </ul>
               <a
                 href="#contato"
@@ -101,46 +98,31 @@ export default function Expansao() {
             </div>
           </div>
 
-          {/* Card 2 — Internacionalização */}
+          {/* Coluna de Imagem */}
           <div
-            ref={card2.ref}
+            ref={franquiaImg.ref}
             className={[
-              "relative transition-all duration-700 ease-out delay-150 motion-reduce:transition-none",
-              card2.visible
-                ? "opacity-100 translate-y-0 scale-100"
-                : "opacity-0 translate-y-6 scale-95",
+              "relative order-2 aspect-[16/10] w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5",
+              "transition-all duration-700 ease-out delay-100 motion-reduce:transition-none",
+              franquiaImg.visible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-6",
             ].join(" ")}
           >
-            <div className="rounded-2xl bg-white border border-slate-200 p-6 md:p-8 shadow-sm">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-700 text-white text-lg font-bold">
-                I
-              </div>
-              <h3 className="mt-4 text-2xl font-semibold text-slate-900">
-                Internacionalização
-              </h3>
-              <p className="mt-2 text-slate-700">
-                Expansão para a Europa com estudo regulatório, adaptação do modelo
-                e operação piloto com parceiros locais para reduzir riscos.
-              </p>
-              <ul className="mt-4 space-y-2 text-slate-700">
-                <li>• Fit regulatório, jurídico e benchmarking por país</li>
-                <li>• Go-to-market, canais, territórios e proposta de valor</li>
-                <li>• Implantação piloto e suporte local à operação</li>
-              </ul>
-              <a
-                href="#contato"
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-purple-700 hover:bg-purple-800 text-white px-6 py-3 font-semibold shadow-lg transition"
-              >
-                Planejar a expansão internacional
-              </a>
-            </div>
+            <Image
+              src="/franquia.png"
+              alt="Diagrama do processo de formatação de franquias"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
         </div>
 
         {/* Linha divisória */}
         <div className="mt-10 md:mt-14 h-px w-full bg-slate-200" />
 
-        {/* Bloco inferior — Acelera+ */}
+        {/* Bloco Acelera+ (Imagem + Texto) */}
         <div
           id="acelera"
           className="mt-10 md:mt-14 grid md:grid-cols-2 gap-8 md:gap-12 items-center"
@@ -149,10 +131,10 @@ export default function Expansao() {
             ref={aceleraImg.ref}
             className={[
               "relative order-2 md:order-1 aspect-[16/10] w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5",
-              "transition-all duration-700 ease-out delay-100 motion-reduce:transition-none",
+              "transition-all duration-700 ease-out motion-reduce:transition-none",
               aceleraImg.visible
                 ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-6",
+                : "opacity-0 -translate-x-6",
             ].join(" ")}
           >
             <Image
@@ -160,19 +142,17 @@ export default function Expansao() {
               alt="Metodologia Acelera+ em ação"
               fill
               className="object-cover"
-              priority={false}
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/10 to-transparent" />
           </div>
 
           <div
             ref={aceleraTxt.ref}
             className={[
-              "order-1 md:order-2 transition-all duration-700 ease-out delay-200 motion-reduce:transition-none",
+              "order-1 md:order-2 transition-all duration-700 ease-out delay-100 motion-reduce:transition-none",
               aceleraTxt.visible
                 ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-6",
+                : "opacity-0 translate-x-6",
             ].join(" ")}
           >
             <span className="text-sm font-semibold uppercase tracking-wider text-purple-700">
@@ -184,13 +164,12 @@ export default function Expansao() {
             <p className="mt-3 text-lg text-slate-700">
               Programa prático para <strong>pequenas e médias empresas</strong> que precisam
               crescer com <strong>previsibilidade e caixa</strong>. Unimos estratégia e execução
-              em <strong>sprints quinzenais</strong>, com priorização de oportunidades, rituais
-              semanais e gestão por indicadores — conduzido pelo consultor VD junto ao seu time.
+              em <strong>sprints quinzenais</strong>, com rituais e gestão por indicadores.
             </p>
             <ul className="mt-4 space-y-2 text-slate-700">
-              <li>• Diagnóstico 360° e plano de 90 dias com metas claras</li>
-              <li>• Funil de marketing e vendas orientado a resultados</li>
-              <li>• Padronização de operações, governança e KPIs em dashboard</li>
+              <li className="flex items-start"><span className="text-purple-700 mr-2 mt-1">•</span>Diagnóstico 360° e plano de 90 dias com metas claras</li>
+              <li className="flex items-start"><span className="text-purple-700 mr-2 mt-1">•</span>Funil de marketing e vendas orientado a resultados</li>
+              <li className="flex items-start"><span className="text-purple-700 mr-2 mt-1">•</span>Padronização de operações, governança e KPIs</li>
             </ul>
             <a
               href="#contato"

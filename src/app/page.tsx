@@ -20,7 +20,7 @@ export default function Home() {
       <Contato
         whatsappLink="https://wa.me/55XXXXXXXXXXX?text=Quero%20falar%20com%20a%20VD"
         instagramLink="https://instagram.com/seuusuario"
-        photoSrc="/consultor1.png"
+        photoSrc="/otavio1.webp"
       />
       <Footer />
     </main>
