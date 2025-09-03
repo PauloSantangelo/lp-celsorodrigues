@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -19,6 +20,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={poppins.variable}>
+      <head>
+        {/* RD Station Tracking Code */}
+        <Script
+          id="rdstation-tracking"
+          strategy="afterInteractive"
+          src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/cca803e1-a2e7-48e5-87b7-afdb00eec8ef-loader.js"
+        />
+      </head>
       <body className="font-sans">{children}</body>
     </html>
   );
