@@ -90,7 +90,7 @@ export default function Expansao() {
                 <li className="flex items-start"><span className="text-orange-500 mr-2 mt-1">•</span>Playbook de expansão e critérios de seleção</li>
               </ul>
               <a
-                href="#contato"
+                href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20formatar%20minha%20Franquia!"
                 className="mt-6 inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 font-semibold shadow-lg transition"
               >
                 Ver proposta de formatação
@@ -172,7 +172,7 @@ export default function Expansao() {
               <li className="flex items-start"><span className="text-purple-700 mr-2 mt-1">•</span>Padronização de operações, governança e KPIs</li>
             </ul>
             <a
-              href="#contato"
+              href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20acelerar%20meu%20neg%C3%B3cio!"
               className="mt-6 inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 font-semibold shadow-lg transition-transform duration-300 hover:scale-[1.03] motion-reduce:transform-none"
             >
               Conhecer o Acelera+

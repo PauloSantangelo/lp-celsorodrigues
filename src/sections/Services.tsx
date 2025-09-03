@@ -166,7 +166,7 @@ function FooterCta() {
       ].join(" ")}
     >
       <a
-        href="#contato"
+        href="#formulario"
         className="inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 px-8 py-3 text-base font-semibold text-white shadow-lg transition-transform duration-300 hover:scale-[1.03] motion-reduce:transform-none"
       >
         Solicitar Diagnóstico

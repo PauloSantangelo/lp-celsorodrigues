@@ -52,7 +52,7 @@ export const Header = () => {
 
         {/* Botão WhatsApp (desktop) */}
         <a
-          href="https://wa.me/seu-numero-aqui"
+          href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20transformar%20meu%20neg%C3%B3cio"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:inline-flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-5 transition-colors shadow-sm"
@@ -100,7 +100,7 @@ export const Header = () => {
             </NavLink>
 
             <a
-              href="https://wa.me/seu-numero-aqui"
+              href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20transformar%20meu%20neg%C3%B3cio"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 px-5 transition-colors"

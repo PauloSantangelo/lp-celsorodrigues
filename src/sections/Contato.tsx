@@ -36,12 +36,11 @@ function useReveal<T extends HTMLElement>(opts?: IntersectionObserverInit) {
 }
 
 type ContatoProps = {
-  whatsappLink: string;
   instagramLink: string;
   photoSrc: string;
 };
 
-export default function Contato({ whatsappLink, instagramLink, photoSrc }: ContatoProps) {
+export default function Contato({ instagramLink, photoSrc }: ContatoProps) {
   const head = useReveal<HTMLDivElement>();
   const formRev = useReveal<HTMLDivElement>();
   const photoRev = useReveal<HTMLDivElement>();
@@ -51,7 +50,6 @@ export default function Contato({ whatsappLink, instagramLink, photoSrc }: Conta
     <section id="contato" className="bg-slate-50" aria-label="Contato e canais">
       {/* Topo: título + formulário de franquia */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
-        {/* Título e subtítulo atualizados */}
         <div
           ref={head.ref}
           className={[
@@ -68,22 +66,25 @@ export default function Contato({ whatsappLink, instagramLink, photoSrc }: Conta
           </p>
         </div>
 
-        {/* Formulário de Franquia integrado aqui */}
+        {/* Formulário de Franquia */}
         <div
           ref={formRev.ref}
           className={[
             "mt-10 md:mt-12 transition-all duration-700 ease-out delay-150 motion-reduce:transition-none",
-            formRev.visible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95",
+            formRev.visible
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 translate-y-4 scale-95",
           ].join(" ")}
         >
           <FormularioFranquia />
         </div>
       </div>
 
-      {/* Faixa roxa: foto + canais (mantida como contato alternativo) */}
+      {/* Faixa roxa: foto + canais */}
       <div className="relative w-full bg-purple-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
           <div className="relative mx-auto grid md:grid-cols-[1fr_auto] items-center gap-8 md:gap-12">
+            {/* Foto */}
             <div
               ref={photoRev.ref}
               className={[
@@ -92,12 +93,26 @@ export default function Contato({ whatsappLink, instagramLink, photoSrc }: Conta
                 photoRev.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6",
               ].join(" ")}
             >
-              <div className="absolute -z-10 h-72 w-72 sm:h-80 sm:w-80 rounded-full bg-purple-700 blur-2xl opacity-60" aria-hidden="true" />
-              <div className="absolute -z-10 h-80 w-80 sm:h-96 sm:w-96 rounded-full ring-2 ring-white/10" aria-hidden="true" />
+              <div
+                className="absolute -z-10 h-72 w-72 sm:h-80 sm:w-80 rounded-full bg-purple-700 blur-2xl opacity-60"
+                aria-hidden="true"
+              />
+              <div
+                className="absolute -z-10 h-80 w-80 sm:h-96 sm:w-96 rounded-full ring-2 ring-white/10"
+                aria-hidden="true"
+              />
               <div className="relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 rounded-full overflow-hidden ring-4 ring-white/80 shadow-2xl">
-                <Image src={photoSrc} alt="Foto de Otávio Silva" fill className="object-cover" sizes="(max-width: 640px) 12rem, (max-width: 768px) 14rem, 16rem" />
+                <Image
+                  src={photoSrc}
+                  alt="Foto de Otávio Silva"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 12rem, (max-width: 768px) 14rem, 16rem"
+                />
               </div>
             </div>
+
+            {/* Info + botões */}
             <div
               ref={infoRev.ref}
               className={[
@@ -109,13 +124,30 @@ export default function Contato({ whatsappLink, instagramLink, photoSrc }: Conta
               <div className="text-white">
                 <h3 className="text-2xl md:text-3xl font-bold">Otávio Silva</h3>
                 <p className="mt-1 text-white/80">Consultor Franqueado VD Negócios</p>
-                <p className="mt-4 text-white/90">Prefere um contato direto? <br className="sm:hidden"/>Fale comigo pelo WhatsApp ou Instagram.</p>
+                <p className="mt-4 text-white/90">
+                  Prefere um contato direto? <br className="sm:hidden" />
+                  Fale comigo pelo WhatsApp ou Instagram.
+                </p>
               </div>
+
               <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 font-semibold shadow-lg transition-transform duration-300 hover:scale-[1.03]">
+                {/* Botão fixo WhatsApp */}
+                <a
+                  href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20transformar%20meu%20neg%C3%B3cio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 font-semibold shadow-lg transition-transform duration-300 hover:scale-[1.03]"
+                >
                   <FaWhatsapp className="text-lg" /> Falar no WhatsApp
                 </a>
-                <a href={instagramLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 justify-center rounded-full bg-white text-purple-900 hover:bg-purple-50 px-6 py-3 font-semibold shadow-md transition-transform duration-300 hover:scale-[1.03]">
+
+                {/* Botão Instagram */}
+                <a
+                  href={instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 justify-center rounded-full bg-white text-purple-900 hover:bg-purple-50 px-6 py-3 font-semibold shadow-md transition-transform duration-300 hover:scale-[1.03]"
+                >
                   <FaInstagram className="text-xl" /> Instagram
                 </a>
               </div>

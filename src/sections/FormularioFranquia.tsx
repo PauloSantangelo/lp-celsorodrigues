@@ -34,7 +34,8 @@ export default function FormularioFranquia() {
   }, [status]);
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200">
+    
+    <div id="formulario" className="w-full max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200">
       <form
         className="space-y-5"
         action="https://formspree.io/f/YOUR_UNIQUE_ID" // <- troque pelo seu ID do Formspree
