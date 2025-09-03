@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import FormularioFranquia from "./FormularioFranquia"; // Importamos o novo formulário
+import FormularioFranquia from "./FormularioFranquia";
 
 /** Hook leve de reveal on scroll */
 function useReveal<T extends HTMLElement>(opts?: IntersectionObserverInit) {
@@ -71,9 +71,7 @@ export default function Contato({ instagramLink, photoSrc }: ContatoProps) {
           ref={formRev.ref}
           className={[
             "mt-10 md:mt-12 transition-all duration-700 ease-out delay-150 motion-reduce:transition-none",
-            formRev.visible
-              ? "opacity-100 translate-y-0 scale-100"
-              : "opacity-0 translate-y-4 scale-95",
+            formRev.visible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95",
           ].join(" ")}
         >
           <FormularioFranquia />
