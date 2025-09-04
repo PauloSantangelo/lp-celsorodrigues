@@ -39,10 +39,11 @@ function useReveal<T extends HTMLElement>(opts?: IntersectionObserverInit) {
   return { ref, visible };
 }
 
-/** Extrai ID do YouTube */
+/** Extrai ID do YouTube (aceita links com/sem protocolo) */
 function parseYouTube(url: string): string | null {
   try {
-    const u = new URL(url);
+    const normalized = url.startsWith("http") ? url : `https://${url}`;
+    const u = new URL(normalized);
     const host = u.hostname.replace(/^www\./, "");
     const path = u.pathname;
 
@@ -65,11 +66,17 @@ type VideoItem = {
 };
 
 const VIDEOS: VideoItem[] = [
-  // Novo vídeo pedido
+  // Novo vídeo pedido (watch 16:9)
   {
     url: "https://www.youtube.com/watch?v=9MHjlXD46ZU",
     author: "Clínica Pró-Mulher | Clientes VD Negócios",
     caption: "Depoimento",
+  },
+  // Novo vídeo pedido (shorts 9:16) — aceita sem protocolo
+  {
+    url: "youtube.com/shorts/R65cQSr4FIQ?feature=share",
+    author: "Clientes VD Negócios",
+    caption: "Depoimento – Shorts",
   },
   {
     url: "https://www.youtube.com/shorts/2eB98enwNEc",
@@ -182,7 +189,7 @@ function Slide({ item }: { item: VideoItem }) {
       ref={rev.ref}
       className={[
         "snap-center shrink-0",
-        "min-w-[90%] sm:min-w-[75%] lg:min-w-[48%]", // 1 mobile, 2 desktop
+        "min-w-[90%] sm:min-w-[75%] lg:min-w-[48%]",
         "transition-all duration-700 ease-out",
         rev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
       ].join(" ")}
@@ -204,9 +211,7 @@ function Slide({ item }: { item: VideoItem }) {
 
         {(item.author || item.caption) && (
           <div className="pt-3 text-center">
-            {item.author && (
-              <p className="text-sm font-semibold text-purple-900">{item.author}</p>
-            )}
+            {item.author && <p className="text-sm font-semibold text-purple-900">{item.author}</p>}
             {item.caption && <p className="text-sm text-slate-600">{item.caption}</p>}
           </div>
         )}
