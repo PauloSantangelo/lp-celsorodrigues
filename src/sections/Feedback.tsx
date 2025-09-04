@@ -65,6 +65,12 @@ type VideoItem = {
 };
 
 const VIDEOS: VideoItem[] = [
+  // Novo vídeo pedido
+  {
+    url: "https://www.youtube.com/watch?v=9MHjlXD46ZU",
+    author: "Clínica Pró-Mulher | Clientes VD Negócios",
+    caption: "Depoimento",
+  },
   {
     url: "https://www.youtube.com/shorts/2eB98enwNEc",
     author: "Michelli Lopes",
@@ -168,6 +174,9 @@ function Slide({ item }: { item: VideoItem }) {
   const id = parseYouTube(item.url);
   if (!id) return null;
 
+  // Detecta Shorts (9:16). Para watch/normal usa 16:9.
+  const isShort = item.url.includes("/shorts/");
+
   return (
     <div
       ref={rev.ref}
@@ -178,10 +187,10 @@ function Slide({ item }: { item: VideoItem }) {
         rev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
       ].join(" ")}
     >
-      <div className="relative bg-white rounded-xl border border-purple-100 shadow-md p-2 hover:shadow-lg transition-shadow flex flex-col items-center">
-        {/* vídeo 9:16 menor */}
-        <div className="overflow-hidden rounded-lg ring-1 ring-purple-100 w-[220px]">
-          <div className="relative aspect-[9/16] h-[320px]">
+      <div className="relative bg-white rounded-xl border border-purple-100 shadow-md p-3 hover:shadow-lg transition-shadow">
+        {/* Wrapper do vídeo */}
+        <div className={isShort ? "mx-auto w-[220px]" : "w-full"}>
+          <div className={isShort ? "relative aspect-[9/16] h-[320px]" : "relative aspect-video w-full"}>
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${id}?rel=0`}
               title={item.caption || "Depoimento de cliente"}
@@ -194,7 +203,7 @@ function Slide({ item }: { item: VideoItem }) {
         </div>
 
         {(item.author || item.caption) && (
-          <div className="pt-2 text-center max-w-[220px]">
+          <div className="pt-3 text-center">
             {item.author && (
               <p className="text-sm font-semibold text-purple-900">{item.author}</p>
             )}

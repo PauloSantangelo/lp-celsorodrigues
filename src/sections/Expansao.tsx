@@ -69,31 +69,36 @@ export default function Expansao() {
             ref={franquiaTxt.ref}
             className={[
               "order-1 transition-all duration-700 ease-out motion-reduce:transition-none",
-              franquiaTxt.visible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-6",
+              franquiaTxt.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6",
             ].join(" ")}
           >
             <div className="rounded-2xl bg-white border border-slate-200 p-6 md:p-8 shadow-sm h-full">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500 text-white text-lg font-bold">
-                F
-              </div>
-              <h3 className="mt-4 text-2xl font-semibold text-slate-900">
+              {/* Removido o quadrado com a letra F */}
+              <h3 className="text-2xl font-semibold text-slate-900">
                 Formatação de Franquias
               </h3>
               <p className="mt-2 text-slate-700">
                 Estruturamos seu negócio para se tornar uma rede de franquias sólida, com segurança jurídica e pronta para escalar.
               </p>
               <ul className="mt-4 space-y-2 text-slate-700">
-                <li className="flex items-start"><span className="text-orange-500 mr-2 mt-1">•</span>COF, Contrato e Manuais Operacionais</li>
-                <li className="flex items-start"><span className="text-orange-500 mr-2 mt-1">•</span>Modelagem financeira completa (payback, taxas, etc.)</li>
-                <li className="flex items-start"><span className="text-orange-500 mr-2 mt-1">•</span>Playbook de expansão e critérios de seleção</li>
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2 mt-1">•</span>
+                  Modelo de negócio e plano de negócio
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2 mt-1">•</span>
+                  ⁠Contrato, COF e Manuais Operacionais
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-500 mr-2 mt-1">•</span>
+                  ⁠Plano de expansão e Comercial
+                </li>
               </ul>
               <a
                 href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20formatar%20minha%20Franquia!"
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 font-semibold shadow-lg transition"
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 font-semibold shadow-lg transition-transform duration-300 hover:scale-[1.03]"
               >
-                Ver proposta de formatação
+                Falar com especialista
               </a>
             </div>
           </div>
@@ -104,9 +109,7 @@ export default function Expansao() {
             className={[
               "relative order-2 aspect-[16/10] w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5",
               "transition-all duration-700 ease-out delay-100 motion-reduce:transition-none",
-              franquiaImg.visible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-6",
+              franquiaImg.visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6",
             ].join(" ")}
           >
             <Image
@@ -132,9 +135,7 @@ export default function Expansao() {
             className={[
               "relative order-2 md:order-1 aspect-[16/10] w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5",
               "transition-all duration-700 ease-out motion-reduce:transition-none",
-              aceleraImg.visible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-6",
+              aceleraImg.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6",
             ].join(" ")}
           >
             <Image
@@ -150,9 +151,7 @@ export default function Expansao() {
             ref={aceleraTxt.ref}
             className={[
               "order-1 md:order-2 transition-all duration-700 ease-out delay-100 motion-reduce:transition-none",
-              aceleraTxt.visible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-6",
+              aceleraTxt.visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6",
             ].join(" ")}
           >
             <span className="text-sm font-semibold uppercase tracking-wider text-purple-700">
@@ -162,20 +161,27 @@ export default function Expansao() {
               Acelera+ para PMEs
             </h3>
             <p className="mt-3 text-lg text-slate-700">
-              Programa prático para <strong>pequenas e médias empresas</strong> que precisam
-              crescer com <strong>previsibilidade e caixa</strong>. Unimos estratégia e execução
-              em <strong>sprints quinzenais</strong>, com rituais e gestão por indicadores.
+              Programa prático para <strong>pequenas e médias empresas</strong> que precisam crescer com <strong>previsibilidade e caixa</strong>. Unimos estratégia e execução em <strong>sprints quinzenais</strong>, com rituais e gestão por indicadores.
             </p>
             <ul className="mt-4 space-y-2 text-slate-700">
-              <li className="flex items-start"><span className="text-purple-700 mr-2 mt-1">•</span>Diagnóstico 360° e plano de 90 dias com metas claras</li>
-              <li className="flex items-start"><span className="text-purple-700 mr-2 mt-1">•</span>Funil de marketing e vendas orientado a resultados</li>
-              <li className="flex items-start"><span className="text-purple-700 mr-2 mt-1">•</span>Padronização de operações, governança e KPIs</li>
+              <li className="flex items-start">
+                <span className="text-purple-700 mr-2 mt-1">•</span>
+                Diagnóstico 360° e plano de 90 dias com metas claras
+              </li>
+              <li className="flex items-start">
+                <span className="text-purple-700 mr-2 mt-1">•</span>
+                Funil de marketing e vendas orientado a resultados
+              </li>
+              <li className="flex items-start">
+                <span className="text-purple-700 mr-2 mt-1">•</span>
+                Padronização de operações, governança e KPIs
+              </li>
             </ul>
             <a
               href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20acelerar%20meu%20neg%C3%B3cio!"
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 font-semibold shadow-lg transition-transform duration-300 hover:scale-[1.03] motion-reduce:transform-none"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 font-semibold shadow-lg transition-transform duration-300 hover:scale-[1.03]"
             >
-              Conhecer o Acelera+
+              Fazer Diagnóstico Gratuito
             </a>
           </div>
         </div>

@@ -59,7 +59,7 @@ export default function Services() {
     },
     {
       title: "Formatação de Franquias",
-      desc: "COF, contratos, manuais e governança para operar como rede com previsibilidade e lucro.",
+      desc: "Contratos, manuais, comercial e vendas, escale seu negócio com segurança e lucratividade.",
       icon: Layers,
     },
     {

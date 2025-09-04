@@ -76,7 +76,7 @@ export const Hero = () => {
               className={[
                 "mt-5 text-base sm:text-lg md:text-xl font-normal text-white/90",
                 "transition-all duration-700 ease-out delay-100",
-                "text-justify", // AQUI A ATUALIZAÇÃO FOI FEITA
+                "text-justify",
                 paragraph.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
               ].join(" ")}
             >
@@ -100,7 +100,7 @@ export const Hero = () => {
                 href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20transformar%20meu%20neg%C3%B3cio"
                 className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full shadow-lg transition-transform duration-300 px-7 py-3 text-base md:px-10 md:py-4 md:text-lg hover:scale-[1.03]"
               >
-                Fale Conosco Agora
+                Falar com especialista
               </a>
             </div>
           </div>
@@ -119,8 +119,8 @@ export const Hero = () => {
               <div className="absolute -inset-[6px] rounded-[48px] bg-white/60" />
               <div className="relative h-full w-full overflow-hidden rounded-[42px] ring-1 ring-white/40">
                 <Image
-                  src="/inicio.webp"
-                  alt="Foto do Consultor VD Negócios"
+                  src="/hero.webp"
+                  alt="Consultoria VD Negócios"
                   fill
                   className="object-cover"
                   priority
@@ -146,10 +146,7 @@ export const Hero = () => {
               <circle cx="50" cy="50" r="46" stroke="currentColor" strokeWidth="6" />
             </svg>
 
-            <div className="hidden sm:flex items-center gap-2 absolute -right-6 md:-right-10 top-20 bg-cyan-400 text-purple-900 rounded-full px-5 py-2 font-semibold shadow-lg">
-              <span className="inline-block h-2 w-2 rounded-full bg-white/90" />
-              VD Negócios
-            </div>
+            {/* removido o selo "VD Negócios" */}
 
             <div className="pointer-events-none absolute -bottom-6 -left-6 rotate-12">
               <div className="h-1 w-24 bg-white/70 mb-1" />

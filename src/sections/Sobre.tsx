@@ -154,7 +154,7 @@ export default function Sobre() {
                 className="inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 px-7 py-3 text-base font-semibold text-white shadow-lg transition-transform duration-300 hover:scale-[1.03]"
                 aria-label="Falar com Otavio no contato"
               >
-                Vamos conversar
+                Falar no WhatsApp
               </a>
               <a
                 href="#servicos"
