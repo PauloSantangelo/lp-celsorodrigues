@@ -134,7 +134,7 @@ export default function FormularioFranquia() {
                        bg-orange-500 hover:bg-orange-600 px-10 py-3 text-base font-semibold text-white 
                        shadow-lg transition-transform duration-300 hover:scale-[1.03] disabled:bg-slate-400"
           >
-            {status === "enviando" ? "Enviando Análise..." : "Fazer Diagnóstico Gratuito"}
+            {status === "enviando" ? "Enviando Análise..." : "Fale com um Especialista"}
           </button>
         </div>
       </form>

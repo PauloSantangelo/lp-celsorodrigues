@@ -66,17 +66,22 @@ type VideoItem = {
 };
 
 const VIDEOS: VideoItem[] = [
-  // Novo vídeo pedido (watch 16:9)
+  // Novo vídeo pedido (shorts 9:16) — Leni Muraki
+  {
+    url: "https://www.youtube.com/shorts/AvVZw0jhSic",
+    author: "Leni Muraki • Flor do Sol",
+    caption: "Depoimento — Cliente VD Negócios",
+  },
+  // Já existentes
   {
     url: "https://www.youtube.com/watch?v=9MHjlXD46ZU",
     author: "Clínica Pró-Mulher | Clientes VD Negócios",
     caption: "Depoimento",
   },
-  // Novo vídeo pedido (shorts 9:16) — aceita sem protocolo
   {
     url: "youtube.com/shorts/R65cQSr4FIQ?feature=share",
     author: "Clientes VD Negócios",
-    caption: "Depoimento – Shorts",
+    caption: "Depoimento - Formatação de franquia",
   },
   {
     url: "https://www.youtube.com/shorts/2eB98enwNEc",

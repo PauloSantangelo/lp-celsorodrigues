@@ -119,7 +119,7 @@ export const Hero = () => {
               <div className="absolute -inset-[6px] rounded-[48px] bg-white/60" />
               <div className="relative h-full w-full overflow-hidden rounded-[42px] ring-1 ring-white/40">
                 <Image
-                  src="/hero.webp"
+                  src="/hero.jpeg"
                   alt="Consultoria VD Negócios"
                   fill
                   className="object-cover"
