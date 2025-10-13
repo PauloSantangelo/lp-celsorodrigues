@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-/* Hook reveal (igual) */
+/* Hook reveal (igual ao seu) */
 function useReveal<T extends HTMLElement>(opts?: IntersectionObserverInit) {
   const ref = useRef<T | null>(null);
   const [visible, setVisible] = useState(false);
@@ -42,7 +42,7 @@ export default function Sobre() {
   const ctasRev = useReveal<HTMLDivElement>();
 
   return (
-    <section id="sobre" className="relative bg-white" aria-label="Sobre o consultor">
+    <section id="sobre" className="relative bg-white" aria-label="Sobre Karine Canabrava">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         <div className="grid md:grid-cols-2 gap-10 md:gap-12 md:items-center">
           {/* IMAGEM */}
@@ -58,11 +58,12 @@ export default function Sobre() {
             >
               <div className="relative w-full aspect-[3/4]">
                 <Image
-                  src="/otavio1.webp"
-                  alt="Otavio Silva — Consultor VD Negócios Londrina"
+                  src="/karine2.webp" // sua imagem
+                  alt="Karine Canabrava — VD Negócios Londrina"
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 640px) 200px, (max-width: 768px) 240px, 320px"
+                  priority
                 />
               </div>
             </div>
@@ -78,38 +79,40 @@ export default function Sobre() {
                 titleRev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
               ].join(" ")}
             >
-              Conheça Otavio Silva
+              Conheça Karine Canabrava
             </h2>
 
-            {/* wrapper para padronizar largura/line-height dos textos */}
+            {/* Conteúdo */}
             <div className="mx-auto md:mx-0 max-w-[65ch] leading-relaxed tracking-normal">
               <p
                 ref={p1Rev.ref}
                 className={[
                   "mt-4 text-lg text-slate-700",
-                  "text-justify hyphens-auto", // <-- AJUSTADO AQUI
+                  "text-justify hyphens-auto",
                   "transition-all duration-700 ease-out delay-100",
                   p1Rev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
                 ].join(" ")}
               >
-                <strong>Otavio Silva</strong> é empreendedor, consultor e mentor, especialista em{" "}
-                <strong>expansão</strong> e <strong>franchising</strong>, com atuação em marcas
-                nacionais e internacionais.
+                <strong>Karine Canabrava</strong> é empresária, sócia de 4 empresas em segmentos
+                distintos que faturam milhões. Atua como consultora e conselheira empresarial que
+                direciona empresários a transformar negócios em empresas lucrativas e sustentáveis
+                que crescem com organização.
               </p>
 
               <p
                 ref={p2Rev.ref}
                 className={[
                   "mt-3 text-lg text-slate-700",
-                  "text-justify hyphens-auto", // <-- AJUSTADO AQUI
+                  "text-justify hyphens-auto",
                   "transition-all duration-700 ease-out delay-150",
                   p2Rev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
                 ].join(" ")}
               >
-                Na <strong>VD Negócios Londrina</strong>, lidera a unidade local com foco em apoiar
-                empresários na construção de{" "}
-                <strong>ativos mais lucrativos, organizados e preparados para crescer</strong>,
-                unindo estratégia, gestão e inovação.
+                Com método, dados e decisões estratégicas, já ajudou centenas de empresas a
+                conquistarem clareza, organização e autonomia. Criadora do método{" "}
+                <strong>Empresa nos Trilhos</strong>, desenvolveu soluções práticas que tiram
+                empresários do improviso e colocam o dono no comando — com lucro no bolso e visão de
+                futuro.
               </p>
 
               <ul
@@ -122,25 +125,34 @@ export default function Sobre() {
               >
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
-                  <span className="text-justify"> {/* <-- AJUSTADO AQUI */}
-                    Especialista em formatação, expansão e gestão de redes
+                  <span className="text-justify">
+                    Foco em empresas <strong>lucrativas, sustentáveis e organizadas</strong>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
-                  <span className="text-justify"> {/* <-- AJUSTADO AQUI */}
-                    Experiência com marcas no Brasil e no exterior
+                  <span className="text-justify">
+                    Decisões com <strong>método, dados e estratégia</strong>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
-                  <span className="text-justify"> {/* <-- AJUSTADO AQUI */}
-                    Foco em resultados: governança, previsibilidade e escala
+                  <span className="text-justify">
+                    Método <strong>Empresa nos Trilhos</strong> — do improviso à gestão com lucro
+                    e visão de futuro
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
+                  <span className="text-justify">
+                    Experiência aplicada em <strong>centenas de empresas</strong> de diferentes
+                    segmentos
                   </span>
                 </li>
               </ul>
             </div>
 
+            {/* CTAs */}
             <div
               ref={ctasRev.ref}
               className={[
@@ -152,7 +164,7 @@ export default function Sobre() {
               <a
                 href="#contato"
                 className="inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 px-7 py-3 text-base font-semibold text-white shadow-lg transition-transform duration-300 hover:scale-[1.03]"
-                aria-label="Falar com Otavio no contato"
+                aria-label="Falar com a equipe pelo WhatsApp"
               >
                 Falar no WhatsApp
               </a>

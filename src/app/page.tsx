@@ -19,7 +19,7 @@ export default function Home() {
       <Expansao />
       <Contato
         instagramLink="https://instagram.com/seuusuario"
-        photoSrc="/otavio1.webp"
+        photoSrc="/karine1.webp"
       />
       <Footer />
     </main>

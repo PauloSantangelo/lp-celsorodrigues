@@ -141,7 +141,7 @@ export default function FormularioFranquia() {
 
       {status === "sucesso" && (
         <p className="text-center mt-4 p-3 bg-green-100 text-green-800 rounded-md">
-          Dados enviados! Em breve, Otávio entrará em contato.
+          Dados enviados! Em breve, Karine entrará em contato.
         </p>
       )}
       {status === "erro" && (

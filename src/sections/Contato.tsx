@@ -102,7 +102,7 @@ export default function Contato({ instagramLink, photoSrc }: ContatoProps) {
               <div className="relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 rounded-full overflow-hidden ring-4 ring-white/80 shadow-2xl">
                 <Image
                   src={photoSrc}
-                  alt="Foto de Otávio Silva"
+                  alt="Foto de Karine Canabrava"
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 12rem, (max-width: 768px) 14rem, 16rem"
@@ -120,8 +120,8 @@ export default function Contato({ instagramLink, photoSrc }: ContatoProps) {
               ].join(" ")}
             >
               <div className="text-white">
-                <h3 className="text-2xl md:text-3xl font-bold">Otávio Silva</h3>
-                <p className="mt-1 text-white/80">Consultor Franqueado VD Negócios</p>
+                <h3 className="text-2xl md:text-3xl font-bold">Karine Canabrava</h3>
+                <p className="mt-1 text-white/80">Consultora Franqueada VD Negócios</p>
                 <p className="mt-4 text-white/90">
                   Prefere um contato direto? <br className="sm:hidden" />
                   Fale comigo pelo WhatsApp ou Instagram.
