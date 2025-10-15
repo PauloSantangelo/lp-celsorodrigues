@@ -131,7 +131,7 @@ export default function Contato({ instagramLink, photoSrc }: ContatoProps) {
               <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
                 {/* Botão fixo WhatsApp */}
                 <a
-                  href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20transformar%20meu%20neg%C3%B3cio"
+                  href="https://wa.me/0000000000000"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 font-semibold shadow-lg transition-transform duration-300 hover:scale-[1.03]"

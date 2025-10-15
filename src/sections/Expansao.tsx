@@ -95,7 +95,7 @@ export default function Expansao() {
                 </li>
               </ul>
               <a
-                href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20formatar%20minha%20Franquia!"
+                href="https://wa.me/0000000000000"
                 className="mt-6 inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 font-semibold shadow-lg transition-transform duration-300 hover:scale-[1.03]"
               >
                 Falar com especialista
@@ -178,7 +178,7 @@ export default function Expansao() {
               </li>
             </ul>
             <a
-              href="https://wa.me/5514982326732?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20acelerar%20meu%20neg%C3%B3cio!"
+              href="https://wa.me/0000000000000"
               className="mt-6 inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 font-semibold shadow-lg transition-transform duration-300 hover:scale-[1.03]"
             >
               Fazer Diagnóstico Gratuito
