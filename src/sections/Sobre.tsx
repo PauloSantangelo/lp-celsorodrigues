@@ -42,7 +42,7 @@ export default function Sobre() {
   const ctasRev = useReveal<HTMLDivElement>();
 
   return (
-    <section id="sobre" className="relative bg-white" aria-label="Sobre Karine Canabrava">
+    <section id="sobre" className="relative bg-white" aria-label="Sobre Celso Rodrigues">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         <div className="grid md:grid-cols-2 gap-10 md:gap-12 md:items-center">
           {/* IMAGEM */}
@@ -58,8 +58,8 @@ export default function Sobre() {
             >
               <div className="relative w-full aspect-[3/4]">
                 <Image
-                  src="/karine2.webp" // sua imagem
-                  alt="Karine Canabrava — VD Negócios Londrina"
+                  src="/celso1.webp"
+                  alt="Celso Rodrigues — VD Negócios São Paulo"
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 640px) 200px, (max-width: 768px) 240px, 320px"
@@ -79,7 +79,7 @@ export default function Sobre() {
                 titleRev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
               ].join(" ")}
             >
-              Conheça Karine Canabrava
+              Conheça Celso Rodrigues
             </h2>
 
             {/* Conteúdo */}
@@ -93,10 +93,10 @@ export default function Sobre() {
                   p1Rev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
                 ].join(" ")}
               >
-                <strong>Karine Canabrava</strong> é empresária, sócia de 4 empresas em segmentos
-                distintos que faturam milhões. Atua como consultora e conselheira empresarial que
-                direciona empresários a transformar negócios em empresas lucrativas e sustentáveis
-                que crescem com organização.
+                <strong>Celso Rodrigues</strong> possui mais de 35 anos de experiência em empresas
+                de médio e grande porte, além de multinacionais. Atuou nos segmentos de Varejo,
+                Franquias, B2B, B2C, Educação e Terceiro Setor, sempre com foco em resultados e
+                crescimento sustentável.
               </p>
 
               <p
@@ -108,11 +108,10 @@ export default function Sobre() {
                   p2Rev.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
                 ].join(" ")}
               >
-                Com método, dados e decisões estratégicas, já ajudou centenas de empresas a
-                conquistarem clareza, organização e autonomia. Criadora do método{" "}
-                <strong>Empresa nos Trilhos</strong>, desenvolveu soluções práticas que tiram
-                empresários do improviso e colocam o dono no comando — com lucro no bolso e visão de
-                futuro.
+                Durante sua trajetória, liderou equipes multidisciplinares e conduziu operações de
+                alta complexidade em todo o país. É especialista em gestão de operações, expansão de
+                redes de franquias, desenvolvimento de líderes e otimização de processos, unindo
+                estratégia e eficiência para transformar negócios em operações de alta performance.
               </p>
 
               <ul
@@ -126,27 +125,27 @@ export default function Sobre() {
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
                   <span className="text-justify">
-                    Foco em empresas <strong>lucrativas, sustentáveis e organizadas</strong>
+                    Diretor de Operações, Consultor de Negócios e Mentor Empresarial.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
                   <span className="text-justify">
-                    Decisões com <strong>método, dados e estratégia</strong>
+                    Professor e palestrante em temas de Gestão, Pessoas e Processos.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
                   <span className="text-justify">
-                    Método <strong>Empresa nos Trilhos</strong> — do improviso à gestão com lucro
-                    e visão de futuro
+                    Pós-graduações em Varejo, Marketing, Finanças e Recursos Humanos, com MBA em
+                    Gestão de Pessoas.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-orange-500" />
                   <span className="text-justify">
-                    Experiência aplicada em <strong>centenas de empresas</strong> de diferentes
-                    segmentos
+                    Reconhecido por sua <strong>visão estratégica</strong> e foco em resultados
+                    sustentáveis.
                   </span>
                 </li>
               </ul>
@@ -162,9 +161,11 @@ export default function Sobre() {
               ].join(" ")}
             >
               <a
-                href="#contato"
+                href="https://wa.me/5511996398460"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 px-7 py-3 text-base font-semibold text-white shadow-lg transition-transform duration-300 hover:scale-[1.03]"
-                aria-label="Falar com a equipe pelo WhatsApp"
+                aria-label="Falar com o representante pelo WhatsApp"
               >
                 Falar no WhatsApp
               </a>

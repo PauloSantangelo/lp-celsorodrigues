@@ -18,8 +18,7 @@ export default function Home() {
       <Feedback />
       <Expansao />
       <Contato
-        instagramLink="https://instagram.com/seuusuario"
-        photoSrc="/karine1.webp"
+        instagramLink="https://www.instagram.com/vdnegocios.sp/"
       />
       <Footer />
     </main>
