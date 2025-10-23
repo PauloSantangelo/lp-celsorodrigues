@@ -25,7 +25,7 @@ export default function RootLayout({
         <Script
           id="rdstation-tracking"
           strategy="afterInteractive"
-          src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/cca803e1-a2e7-48e5-87b7-afdb00eec8ef-loader.js"
+          src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/2868bf31-a109-441e-a171-a659262778a6-loader.js"
         />
       </head>
       <body className="font-sans">{children}</body>
