@@ -12,7 +12,7 @@ export default function FormularioFranquia() {
     utm_content: "",
   });
 
-  // Coleta UTMs da URL
+  // Coleta UTMs da URL para salvar junto no Formspree (opcional)
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
@@ -25,39 +25,23 @@ export default function FormularioFranquia() {
     });
   }, []);
 
-  // Envio manual para RD Station API
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("enviando");
-
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      const response = await fetch("https://www.rdstation.com.br/api/1.3/conversions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...data,
-          token_rdstation: "2868bf31-a109-441e-a171-a659262778a6", // 🔹 use o token público do seu RD
-        }),
-      });
-
-      if (!response.ok) throw new Error();
-      setStatus("sucesso");
-      e.currentTarget.reset();
-    } catch (err) {
-      console.error(err);
-      setStatus("erro");
+  // Exibe feedback visual após o submit nativo
+  useEffect(() => {
+    if (status === "enviando") {
+      const t = setTimeout(() => setStatus("sucesso"), 1200);
+      return () => clearTimeout(t);
     }
-  };
+  }, [status]);
 
   return (
-    <div
-      id="formulario"
-      className="w-full max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200"
-    >
-      <form className="space-y-5" onSubmit={handleSubmit}>
+    
+    <div id="formulario" className="w-full max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200">
+      <form
+        className="space-y-5"
+        action="https://formspree.io/f/YOUR_UNIQUE_ID" // <- troque pelo seu ID do Formspree
+        method="POST"
+        onSubmit={() => setStatus("enviando")}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
             <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-1">
@@ -69,7 +53,8 @@ export default function FormularioFranquia() {
               name="name"
               required
               placeholder="Digite seu nome"
-              className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+              className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
+                         focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
             />
           </div>
 
@@ -83,7 +68,8 @@ export default function FormularioFranquia() {
               name="email"
               required
               placeholder="seuemail@empresa.com"
-              className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+              className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
+                         focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
             />
           </div>
 
@@ -97,7 +83,8 @@ export default function FormularioFranquia() {
               name="mobile_phone"
               required
               placeholder="(11) 99999-9999"
-              className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+              className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
+                         focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
             />
           </div>
 
@@ -111,7 +98,8 @@ export default function FormularioFranquia() {
               name="company"
               required
               placeholder="Ex: VD Negócios"
-              className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+              className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
+                         focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
             />
           </div>
         </div>
@@ -126,11 +114,12 @@ export default function FormularioFranquia() {
             name="cf_segmento"
             required
             placeholder="Ex: Alimentação, moda, serviços, etc."
-            className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+            className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
+                       focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
           />
         </div>
 
-        {/* UTMs */}
+        {/* UTMs opcionais */}
         <input type="hidden" name="utm_source" value={utms.utm_source} />
         <input type="hidden" name="utm_medium" value={utms.utm_medium} />
         <input type="hidden" name="utm_campaign" value={utms.utm_campaign} />
@@ -141,7 +130,9 @@ export default function FormularioFranquia() {
           <button
             type="submit"
             disabled={status === "enviando"}
-            className="w-full md:w-auto inline-flex items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 px-10 py-3 text-base font-semibold text-white shadow-lg transition-transform duration-300 hover:scale-[1.03] disabled:bg-slate-400"
+            className="w-full md:w-auto inline-flex items-center justify-center rounded-full 
+                       bg-orange-500 hover:bg-orange-600 px-10 py-3 text-base font-semibold text-white 
+                       shadow-lg transition-transform duration-300 hover:scale-[1.03] disabled:bg-slate-400"
           >
             {status === "enviando" ? "Enviando Análise..." : "Fale com um Especialista"}
           </button>
@@ -150,7 +141,7 @@ export default function FormularioFranquia() {
 
       {status === "sucesso" && (
         <p className="text-center mt-4 p-3 bg-green-100 text-green-800 rounded-md">
-          Dados enviados! Em breve, Celso entrará em contato.
+          Dados enviados! Em breve, Silvio entrará em contato.
         </p>
       )}
       {status === "erro" && (
