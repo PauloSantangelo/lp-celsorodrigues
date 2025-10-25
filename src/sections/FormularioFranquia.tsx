@@ -12,7 +12,7 @@ export default function FormularioFranquia() {
     utm_content: "",
   });
 
-  // Coleta UTMs da URL para salvar junto no Formspree (opcional)
+  // Coleta UTMs da URL para enviar junto ao RD Station
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
@@ -25,41 +25,68 @@ export default function FormularioFranquia() {
     });
   }, []);
 
-  // Exibe feedback visual após o submit nativo
+  // Simula feedback visual após envio
   useEffect(() => {
     if (status === "enviando") {
-      const t = setTimeout(() => setStatus("sucesso"), 1200);
+      const t = setTimeout(() => setStatus("sucesso"), 1500);
       return () => clearTimeout(t);
     }
   }, [status]);
 
   return (
-    
-    <div id="formulario" className="w-full max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200">
+    <div
+      id="formulario"
+      className="w-full max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200"
+    >
       <form
         className="space-y-5"
-        action="https://formspree.io/f/YOUR_UNIQUE_ID" // <- troque pelo seu ID do Formspree
+        action="https://www.rdstation.com.br/api/1.3/conversions"
         method="POST"
         onSubmit={() => setStatus("enviando")}
       >
+        {/* TOKEN DO RD STATION (substituir abaixo pelo seu real) */}
+        <input
+          type="hidden"
+          name="token_rdstation"
+          value="SEU_TOKEN_RD_HTML_AQUI"
+        />
+        <input
+          type="hidden"
+          name="identificador"
+          value="formulario_vd_negocios"
+        />
+
+        {/* UTMs opcionais */}
+        <input type="hidden" name="utm_source" value={utms.utm_source} />
+        <input type="hidden" name="utm_medium" value={utms.utm_medium} />
+        <input type="hidden" name="utm_campaign" value={utms.utm_campaign} />
+        <input type="hidden" name="utm_term" value={utms.utm_term} />
+        <input type="hidden" name="utm_content" value={utms.utm_content} />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-1">
+            <label
+              htmlFor="nome"
+              className="block text-sm font-semibold text-slate-700 mb-1"
+            >
               Nome
             </label>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="nome"
+              name="nome"
               required
               placeholder="Digite seu nome"
               className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
-                         focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+                         focus:ring-2 focus:ring-orange-500 placeholder:text-slate-600"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm font-semibold text-slate-700 mb-1"
+            >
               Email Profissional
             </label>
             <input
@@ -69,43 +96,52 @@ export default function FormularioFranquia() {
               required
               placeholder="seuemail@empresa.com"
               className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
-                         focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+                         focus:ring-2 focus:ring-orange-500 placeholder:text-slate-600"
             />
           </div>
 
           <div>
-            <label htmlFor="mobile_phone" className="block text-sm font-semibold text-slate-700 mb-1">
+            <label
+              htmlFor="telefone"
+              className="block text-sm font-semibold text-slate-700 mb-1"
+            >
               Telefone / WhatsApp
             </label>
             <input
               type="tel"
-              id="mobile_phone"
-              name="mobile_phone"
+              id="telefone"
+              name="telefone"
               required
               placeholder="(11) 99999-9999"
               className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
-                         focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+                         focus:ring-2 focus:ring-orange-500 placeholder:text-slate-600"
             />
           </div>
 
           <div>
-            <label htmlFor="company" className="block text-sm font-semibold text-slate-700 mb-1">
+            <label
+              htmlFor="empresa"
+              className="block text-sm font-semibold text-slate-700 mb-1"
+            >
               Nome da Empresa
             </label>
             <input
               type="text"
-              id="company"
-              name="company"
+              id="empresa"
+              name="empresa"
               required
               placeholder="Ex: VD Negócios"
               className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
-                         focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+                         focus:ring-2 focus:ring-orange-500 placeholder:text-slate-600"
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="cf_segmento" className="block text-sm font-semibold text-slate-700 mb-1">
+          <label
+            htmlFor="cf_segmento"
+            className="block text-sm font-semibold text-slate-700 mb-1"
+          >
             Segmento de Atuação
           </label>
           <input
@@ -115,16 +151,9 @@ export default function FormularioFranquia() {
             required
             placeholder="Ex: Alimentação, moda, serviços, etc."
             className="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm 
-                       focus:ring-2 focus:ring-purple-500 placeholder:text-slate-600"
+                       focus:ring-2 focus:ring-orange-500 placeholder:text-slate-600"
           />
         </div>
-
-        {/* UTMs opcionais */}
-        <input type="hidden" name="utm_source" value={utms.utm_source} />
-        <input type="hidden" name="utm_medium" value={utms.utm_medium} />
-        <input type="hidden" name="utm_campaign" value={utms.utm_campaign} />
-        <input type="hidden" name="utm_term" value={utms.utm_term} />
-        <input type="hidden" name="utm_content" value={utms.utm_content} />
 
         <div className="text-center pt-3">
           <button
@@ -141,7 +170,7 @@ export default function FormularioFranquia() {
 
       {status === "sucesso" && (
         <p className="text-center mt-4 p-3 bg-green-100 text-green-800 rounded-md">
-          Dados enviados! Em breve, Silvio entrará em contato.
+          Dados enviados com sucesso! Em breve entraremos em contato.
         </p>
       )}
       {status === "erro" && (
