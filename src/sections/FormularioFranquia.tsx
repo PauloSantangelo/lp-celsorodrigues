@@ -12,7 +12,7 @@ export default function FormularioFranquia() {
     utm_content: "",
   });
 
-  // Coleta UTMs da URL
+  // Captura UTMs da URL
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
@@ -30,16 +30,43 @@ export default function FormularioFranquia() {
     setStatus("enviando");
 
     const form = e.currentTarget;
-    const data = new FormData(form);
+
+    const payload = {
+      event_type: "CONVERSION",
+      event_family: "CDP",
+      payload: {
+        conversion_identifier: "formulario_vd_negocios",
+        name: form.nome.value,
+        email: form.email.value,
+        personal_phone: form.telefone.value,
+        company_name: form.empresa.value,
+        cf_segmento: form.cf_segmento.value,
+        utm_source: utms.utm_source,
+        utm_medium: utms.utm_medium,
+        utm_campaign: utms.utm_campaign,
+        utm_term: utms.utm_term,
+        utm_content: utms.utm_content,
+      },
+    };
 
     try {
-      await fetch("https://www.rdstation.com.br/api/1.3/conversions", {
-        method: "POST",
-        body: data,
-      });
+      const res = await fetch(
+        "https://api.rd.services/platform/conversions?api_key=039c4af8f03f0831a8dd19600f282621",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
-      setStatus("sucesso");
-      form.reset();
+      if (res.ok) {
+        setStatus("sucesso");
+        form.reset();
+      } else {
+        throw new Error(await res.text());
+      }
     } catch {
       setStatus("erro");
     }
@@ -51,31 +78,9 @@ export default function FormularioFranquia() {
       className="w-full max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200"
     >
       <form className="space-y-5" onSubmit={handleSubmit}>
-        {/* TOKEN DO RD STATION */}
-        <input
-          type="hidden"
-          name="token_rdstation"
-          value="SEU_TOKEN_RD_HTML_AQUI"
-        />
-        <input
-          type="hidden"
-          name="identificador"
-          value="formulario_vd_negocios"
-        />
-
-        {/* UTMs */}
-        <input type="hidden" name="utm_source" value={utms.utm_source} />
-        <input type="hidden" name="utm_medium" value={utms.utm_medium} />
-        <input type="hidden" name="utm_campaign" value={utms.utm_campaign} />
-        <input type="hidden" name="utm_term" value={utms.utm_term} />
-        <input type="hidden" name="utm_content" value={utms.utm_content} />
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label
-              htmlFor="nome"
-              className="block text-sm font-semibold text-slate-700 mb-1"
-            >
+            <label htmlFor="nome" className="block text-sm font-semibold text-slate-700 mb-1">
               Nome
             </label>
             <input
@@ -90,10 +95,7 @@ export default function FormularioFranquia() {
           </div>
 
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-semibold text-slate-700 mb-1"
-            >
+            <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-1">
               Email Profissional
             </label>
             <input
@@ -108,10 +110,7 @@ export default function FormularioFranquia() {
           </div>
 
           <div>
-            <label
-              htmlFor="telefone"
-              className="block text-sm font-semibold text-slate-700 mb-1"
-            >
+            <label htmlFor="telefone" className="block text-sm font-semibold text-slate-700 mb-1">
               Telefone / WhatsApp
             </label>
             <input
@@ -126,10 +125,7 @@ export default function FormularioFranquia() {
           </div>
 
           <div>
-            <label
-              htmlFor="empresa"
-              className="block text-sm font-semibold text-slate-700 mb-1"
-            >
+            <label htmlFor="empresa" className="block text-sm font-semibold text-slate-700 mb-1">
               Nome da Empresa
             </label>
             <input
@@ -145,10 +141,7 @@ export default function FormularioFranquia() {
         </div>
 
         <div>
-          <label
-            htmlFor="cf_segmento"
-            className="block text-sm font-semibold text-slate-700 mb-1"
-          >
+          <label htmlFor="cf_segmento" className="block text-sm font-semibold text-slate-700 mb-1">
             Segmento de Atuação
           </label>
           <input
