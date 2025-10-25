@@ -12,7 +12,7 @@ export default function FormularioFranquia() {
     utm_content: "",
   });
 
-  // Coleta UTMs da URL para enviar junto ao RD Station
+  // Coleta UTMs da URL
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
@@ -25,26 +25,33 @@ export default function FormularioFranquia() {
     });
   }, []);
 
-  // Simula feedback visual após envio
-  useEffect(() => {
-    if (status === "enviando") {
-      const t = setTimeout(() => setStatus("sucesso"), 1500);
-      return () => clearTimeout(t);
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("enviando");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      await fetch("https://www.rdstation.com.br/api/1.3/conversions", {
+        method: "POST",
+        body: data,
+      });
+
+      setStatus("sucesso");
+      form.reset();
+    } catch {
+      setStatus("erro");
     }
-  }, [status]);
+  }
 
   return (
     <div
       id="formulario"
       className="w-full max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200"
     >
-      <form
-        className="space-y-5"
-        action="https://www.rdstation.com.br/api/1.3/conversions"
-        method="POST"
-        onSubmit={() => setStatus("enviando")}
-      >
-        {/* TOKEN DO RD STATION (substituir abaixo pelo seu real) */}
+      <form className="space-y-5" onSubmit={handleSubmit}>
+        {/* TOKEN DO RD STATION */}
         <input
           type="hidden"
           name="token_rdstation"
@@ -56,7 +63,7 @@ export default function FormularioFranquia() {
           value="formulario_vd_negocios"
         />
 
-        {/* UTMs opcionais */}
+        {/* UTMs */}
         <input type="hidden" name="utm_source" value={utms.utm_source} />
         <input type="hidden" name="utm_medium" value={utms.utm_medium} />
         <input type="hidden" name="utm_campaign" value={utms.utm_campaign} />
@@ -170,7 +177,7 @@ export default function FormularioFranquia() {
 
       {status === "sucesso" && (
         <p className="text-center mt-4 p-3 bg-green-100 text-green-800 rounded-md">
-          Dados enviados com sucesso! Em breve entraremos em contato.
+          Obrigado por se cadastrar. Em breve, Celso entrará em contato com você.
         </p>
       )}
       {status === "erro" && (
