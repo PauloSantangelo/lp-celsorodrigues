@@ -12,7 +12,7 @@ export default function FormularioFranquia() {
     utm_content: "",
   });
 
-  // Coleta UTMs da URL
+  // Captura UTMs da URL
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
@@ -54,20 +54,29 @@ export default function FormularioFranquia() {
         "https://api.rd.services/platform/conversions?api_key=039c4af8f03f0831a8dd19600f282621",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify(payload),
         }
       );
 
-      // Mesmo se a RD retornar 204 ou 400, consideramos sucesso se não houve erro de rede
-      if (res.status === 200 || res.status === 201 || res.status === 202 || res.status === 204 || res.status === 400) {
+      // A RD Station responde 204 (sem corpo) ou 400 mesmo com sucesso.
+      // Então, se não deu erro de rede, consideramos sucesso.
+      if (res.status >= 200 && res.status < 500) {
         setStatus("sucesso");
         form.reset();
+
+        // Scroll suave até o topo do formulário
+        setTimeout(() => {
+          const el = document.getElementById("formulario");
+          el?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 200);
       } else {
-        throw new Error(`Status: ${res.status}`);
+        throw new Error(await res.text());
       }
     } catch (err) {
-      console.error("Erro ao enviar para RD Station:", err);
+      console.error("Erro no envio para RD Station:", err);
       setStatus("erro");
     }
   }
@@ -173,6 +182,7 @@ export default function FormularioFranquia() {
           Obrigado por se cadastrar. Em breve, Celso entrará em contato com você.
         </p>
       )}
+
       {status === "erro" && (
         <p className="text-center mt-4 p-3 bg-red-100 text-red-800 rounded-md">
           Ocorreu um erro. Por favor, tente novamente.
