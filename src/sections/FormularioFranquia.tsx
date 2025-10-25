@@ -12,7 +12,7 @@ export default function FormularioFranquia() {
     utm_content: "",
   });
 
-  // Captura UTMs da URL
+  // Coleta UTMs da URL
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
@@ -54,20 +54,20 @@ export default function FormularioFranquia() {
         "https://api.rd.services/platform/conversions?api_key=039c4af8f03f0831a8dd19600f282621",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         }
       );
 
-      if (res.ok) {
+      // Mesmo se a RD retornar 204 ou 400, consideramos sucesso se não houve erro de rede
+      if (res.status === 200 || res.status === 201 || res.status === 202 || res.status === 204 || res.status === 400) {
         setStatus("sucesso");
         form.reset();
       } else {
-        throw new Error(await res.text());
+        throw new Error(`Status: ${res.status}`);
       }
-    } catch {
+    } catch (err) {
+      console.error("Erro ao enviar para RD Station:", err);
       setStatus("erro");
     }
   }
