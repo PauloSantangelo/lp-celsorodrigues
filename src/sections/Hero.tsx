@@ -97,7 +97,7 @@ export const Hero = () => {
               ].join(" ")}
             >
               <a
-                href="https://wa.me/0000000000000"
+                href="https://wa.me/5511996398460"
                 className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full shadow-lg transition-transform duration-300 px-7 py-3 text-base md:px-10 md:py-4 md:text-lg hover:scale-[1.03]"
               >
                 Falar com especialista
